@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css" integrity="sha384-BTL0nVi8DnMrNdMQZG1Ww6yasK9ZGnUxL1ZWukXQ7fygA1py52yPp9W4wrR00VML" crossorigin="anonymous">
+        <style>
+/*--------------------------------------------------------------------------------------------- * Copyright (c) Microsoft Corporation. All rights reserved. * Licensed under the MIT License. See License.txt in the project root for license information. *--------------------------------------------------------------------------------------------*/ body { font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback"; font-size: 14px; padding: 0 26px; line-height: 22px; word-wrap: break-word; } #code-csp-warning { position: fixed; top: 0; right: 0; color: white; margin: 16px; text-align: center; font-size: 12px; font-family: sans-serif; background-color:#444444; cursor: pointer; padding: 6px; box-shadow: 1px 1px 1px rgba(0,0,0,.25); } #code-csp-warning:hover { text-decoration: none; background-color:#007acc; box-shadow: 2px 2px 2px rgba(0,0,0,.25); } body.scrollBeyondLastLine { margin-bottom: calc(100vh - 22px); } body.showEditorSelection .code-line { position: relative; } body.showEditorSelection .code-active-line:before, body.showEditorSelection .code-line:hover:before { content: ""; display: block; position: absolute; top: 0; left: -12px; height: 100%; } body.showEditorSelection li.code-active-line:before, body.showEditorSelection li.code-line:hover:before { left: -30px; } .vscode-light.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(0, 0, 0, 0.15); } .vscode-light.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(0, 0, 0, 0.40); } .vscode-light.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-dark.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 255, 255, 0.4); } .vscode-dark.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 255, 255, 0.60); } .vscode-dark.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-high-contrast.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 160, 0, 0.7); } .vscode-high-contrast.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 160, 0, 1); } .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before { border-left: none; } img { max-width: 100%; max-height: 100%; } a { text-decoration: none; } a:hover { text-decoration: underline; } a:focus, input:focus, select:focus, textarea:focus { outline: 1px solid -webkit-focus-ring-color; outline-offset: -1px; } hr { border: 0; height: 2px; border-bottom: 2px solid; } h1 { padding-bottom: 0.3em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; } h1, h2, h3 { font-weight: normal; } h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { font-size: inherit; line-height: auto; } table { border-collapse: collapse; } table > thead > tr > th { text-align: left; border-bottom: 1px solid; } table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td { padding: 5px 10px; } table > tbody > tr + tr > td { border-top: 1px solid; } blockquote { margin: 0 7px 0 5px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; } code { font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback"; font-size: 14px; line-height: 19px; } body.wordWrap pre { white-space: pre-wrap; } .mac code { font-size: 12px; line-height: 18px; } pre:not(.hljs), pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; } /** Theming */ pre code { color: var(--vscode-editor-foreground); } .vscode-light pre:not(.hljs), .vscode-light code > div { background-color: rgba(220, 220, 220, 0.4); } .vscode-dark pre:not(.hljs), .vscode-dark code > div { background-color: rgba(10, 10, 10, 0.4); } .vscode-high-contrast pre:not(.hljs), .vscode-high-contrast code > div { background-color: rgb(0, 0, 0); } .vscode-high-contrast h1 { border-color: rgb(0, 0, 0); } .vscode-light table > thead > tr > th { border-color: rgba(0, 0, 0, 0.69); } .vscode-dark table > thead > tr > th { border-color: rgba(255, 255, 255, 0.69); } .vscode-light h1, .vscode-light hr, .vscode-light table > tbody > tr + tr > td { border-color: rgba(0, 0, 0, 0.18); } .vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td { border-color: rgba(255, 255, 255, 0.18); } 
+</style>
+<style>
+/* Tomorrow Theme */ /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ /* Original theme - https://github.com/chriskempson/tomorrow-theme */ /* Tomorrow Comment */ .hljs-comment, .hljs-quote { color: #8e908c; } /* Tomorrow Red */ .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: #c82829; } /* Tomorrow Orange */ .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: #f5871f; } /* Tomorrow Yellow */ .hljs-attribute { color: #eab700; } /* Tomorrow Green */ .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #718c00; } /* Tomorrow Blue */ .hljs-title, .hljs-section { color: #4271ae; } /* Tomorrow Purple */ .hljs-keyword, .hljs-selector-tag { color: #8959a8; } .hljs { display: block; overflow-x: auto; color: #4d4d4c; padding: 0.5em; } .hljs-emphasis { font-style: italic; } .hljs-strong { font-weight: bold; }
+</style>
+<style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="3-%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88expressions%EF%BC%89">3. 表达式（Expressions）</h1>
+<p>Lua 中的表达式涉及到数值常量、字符串常量、变量、一元和二元运算符、函数调用，以及（非常规的）函数定义和表构造。</p>
+<h2 id="1-%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88arithmetic-operators%EF%BC%89">1. 数值运算符（Arithmetic Operators）</h2>
+<p>Lua 支持常见的数值运算符，其中包括：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>类型</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>二元</td>
+<td>加法</td>
+<td>a + b</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>二元</td>
+<td>减法</td>
+<td>a - b</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>二元</td>
+<td>乘法</td>
+<td>a * b</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>二元</td>
+<td>除法</td>
+<td>a / b</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>二元</td>
+<td>求幂</td>
+<td>x ^ 0.5, x ^ (-1/3)</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>二元</td>
+<td>求余</td>
+<td>a % b, 5 % 2</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>一元</td>
+<td>负号</td>
+<td>-a, -2</td>
+</tr>
+</tbody>
+</table>
+<p>其中，求余运算符的定义如下：</p>
+<pre><code>a % b == a - math.floor(a/b)*b
+</code></pre>
+<p>如果操作数是整数，求余操作没什么不同；如果操作数是实数，求余操作还有其他作用，比如：</p>
+<ul>
+<li>
+<p>对于实数 <code>x</code>，<code>x%1</code> 是 <code>x</code> 的小数部分，<code>x - x%1</code> 则是 <code>x</code> 的整数部分</p>
+</li>
+<li>
+<p>类似地，<code>x - x%0.01</code> 是保留两位小数的 <code>x</code>，于是：</p>
+<pre><code>  x = math.pi
+  print(x - x%0.01)  --&gt; 3.14
+</code></pre>
+</li>
+</ul>
+<h2 id="2-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88relational-operators%EF%BC%89">2. 关系运算符（Relational Operators）</h2>
+<p>Lua 提供了下列关系运算符：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>类型</th>
+<th>含义</th>
+<th>适用的运算对象</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;</code></td>
+<td>二元</td>
+<td>小于</td>
+<td>两个数字，或两个字符串</td>
+<td>1 &lt; 2 (true), &quot;a&quot; &lt; &quot;b&quot; (true)</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>二元</td>
+<td>大于</td>
+<td>两个数字，或两个字符串</td>
+<td>2 &gt; 1 (true), &quot;b&quot; &gt; &quot;a&quot; (true)</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>二元</td>
+<td>小于或等于</td>
+<td>两个数字，或两个字符串</td>
+<td>1 &lt;= 2 (true), &quot;a&quot; &lt;= &quot;b&quot; (true)</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>二元</td>
+<td>大于或等于</td>
+<td>两个数字，或两个字符串</td>
+<td>2 &gt;= 1 (true), &quot;b&quot; &gt;= &quot;a&quot; (true)</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>二元</td>
+<td>等于</td>
+<td>任意两个值</td>
+<td>1 == 2 (false), 1 == 1 (true)</td>
+</tr>
+<tr>
+<td><code>~=</code></td>
+<td>二元</td>
+<td>不等于</td>
+<td>任意两个值</td>
+<td>1 ~= 2 (true), 1 ~= 1 (false)</td>
+</tr>
+</tbody>
+</table>
+<p>关系运算符的运算结果总是 <code>boolean</code> 类型的值。需要特别说明的是：</p>
+<ol>
+<li>
+<p>相对性判断（<code>==</code>、<code>~=</code>）支持所有值的比较</p>
+<ul>
+<li>
+<p>如果两个值的类型不同，则直接被视为不相等。例如：</p>
+<pre><code>  print(1 == &quot;1&quot;)  --&gt; false
+</code></pre>
+</li>
+<li>
+<p>对于表（table）和用户数据（userdata），只有两个值指向同一个对象时，才会被视为相等。例如：</p>
+<pre><code>  a = {}
+  b = {}
+  c = a
+
+  print(a == b)  --&gt; false
+  print(a == c)  --&gt; true
+</code></pre>
+</li>
+<li>
+<p>nil 只等于它自己（nil 常量，或值为 nil 的变量）。例如：</p>
+<pre><code>  a = nil
+
+  print(a == nil)  --&gt; true
+  print(nil == nil)  --&gt; true
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>顺序判断（<code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code>）只支持两个数字，或者两个字符串的比较</p>
+<ul>
+<li>字符串的比较按照字母顺序进行</li>
+<li>如果比较一个数字和一个字符串（如 <code>1 &gt; &quot;1&quot;</code>），Lua 会直接报错</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88logical-operators%EF%BC%89">3. 逻辑运算符（Logical Operators）</h2>
+<p>Lua 中有三个逻辑运算符 <strong>and</strong>、<strong>or</strong> 和 <strong>not</strong>。逻辑运算符把布尔 <strong>false</strong> 和 <code>nil</code> 视为条件假，其他的值都视为条件真。</p>
+<h3 id="%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">基本用法</h3>
+<p>对于 <strong>and</strong> 运算符，如果它的第一个参数为条件假，它会返回第一个参数；否则，它会返回第二个参数。例如：</p>
+<pre><code>print(4 and 5)       --&gt; 5
+print(nil and 13)    --&gt; nil
+print(false and 13)  --&gt; false
+</code></pre>
+<p>对于 <strong>or</strong> 运算符，如果它的第一个参数为条件真，它会返回第一个参数；否则，它会返回第二个参数。例如：</p>
+<pre><code>print(4 or 5)      --&gt; 4
+print(false or 5)  --&gt; 5
+</code></pre>
+<p><strong>not</strong> 运算符总是返回 <code>boolean</code> 值：</p>
+<pre><code>print(not nil)      --&gt; true
+print(not false)    --&gt; true
+print(not 0)        --&gt; false
+print(not not 1)    --&gt; true
+print(not not nil)  --&gt; false
+</code></pre>
+<h3 id="%E7%9F%AD%E8%B7%AF%E6%B1%82%E5%80%BC">短路求值</h3>
+<p>此外，<strong>and</strong> 和 <strong>or</strong> 运算符都遵循“短路求值”（short-cut evaluation），它们只在必要的时候对第二个参数进行求值。例如，表达式 <code>(type(v) == &quot;table&quot; and v.tag == &quot;h1&quot;)</code> 不会报错，因为如果 <code>v</code> 不是表，Lua 就不会对 <code>v.tag</code> 进行求值。</p>
+<p>一些有用的惯例：</p>
+<ul>
+<li>
+<p>设置默认值</p>
+<p><code>x = x or v</code> 等价于 <code>if not x then x = v end</code>（<code>x</code> 被设置为 <code>false</code> 的情况除外）</p>
+</li>
+<li>
+<p>三元条件运算符</p>
+<p><code>a and b or c</code> 等价于 C 中的 <code>a ? b : c</code>。例如，两个数的最大值可以表示为 <code>max = (x &gt; y) and x or y</code></p>
+</li>
+</ul>
+<h2 id="4-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9E%E6%8E%A5%EF%BC%88concatenation%EF%BC%89">4. 字符串连接（Concatenation）</h2>
+<p>Lua 用两个点 <code>..</code> 来表示字符串连接运算符。</p>
+<p>如果遇到数字，Lua 会把它转换字符串：</p>
+<pre><code>print(&quot;Hello&quot; .. &quot;World&quot;)  --&gt; Hello World
+print(0 .. 1)              --&gt; 01
+print(000 .. 01)           --&gt; 01
+</code></pre>
+<p>字符串在 Lua 中是不可变对象，所以连接运算符总是创建一个新字符串，而不会改变原有字符串。</p>
+<h2 id="5-%E9%95%BF%E5%BA%A6%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88the-length-operator%EF%BC%89">5. 长度运算符（The Length Operator）</h2>
+<p>长度运算符 <code>#</code> 可以用在字符串和表上。用在字符串上，它会给出字符串中的字节数；用在表（准确的说，是 <code>序列</code>）上，它会给出表的长度。</p>
+<p>在操作序列时，长度运算符提供了一些惯例用法：</p>
+<pre><code>print(a[#a])   --&gt; 打印序列的最后一个值
+a[#a] = nil    --&gt; 删除序列的最后一个值
+a[#a + 1] = v  --&gt; 将 v 追加到序列的末尾
+</code></pre>
+<h2 id="6-%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%88precedence%EF%BC%89">6. 优先级（Precedence）</h2>
+<p>运算符的优先级，从高到低为：</p>
+<pre><code>^
+not  #    -（一元）
+*    /    %
++    -
+..
+&lt;    &gt;    &lt;=    &gt;=    ~=    ==
+and
+or
+</code></pre>
+<p>运算符的结合性：<code>^</code>、<code>..</code> 和 <code>-</code>（一元）都是右结合的，其他运算符都是左结合的。</p>
+<p><strong>注意</strong>：不确定优先级的时候，或者在复杂的表达式中，建议用明确的括号来确定优先级。</p>
+<h2 id="7-%E8%A1%A8%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%88table-constructors%EF%BC%89">7. 表构造器（Table Constructors）</h2>
+<p>Lua 中，构造器是用于创建并初始化表的表达式。</p>
+<pre><code>empty = {}           -- 空表
+a = {&quot;x&quot;, &quot;y&quot;, &quot;z&quot;}  -- 数组构造器：a[1] == &quot;x&quot;，a[2] == &quot;y&quot;，a[3] == &quot;z&quot;
+a = {x=10, y=20}     -- 记录构造器：a.x == 10，a.y == 20
+a = {                -- 混用数组和记录构造器
+  name=&quot;line&quot;,       -- a.name == &quot;line&quot;
+  {x=0, y=0},        -- a[1]
+  {x=8, y=8}         -- a[2]
+}
+</code></pre>
+<p>一般来讲，用构造器创建并初始化表，比先创建空表再添加字段，来得更高效、更优雅。</p>
+<p>但上面的数组或记录构造器，也有它的局限性：你不能指定负数索引，也不能指定非标识符的索引。为此，Lua 提供了一个更通用、更灵活（同时也更笨重的）构造方式：借助方括号，你可以明确指定任意表达式或值作为索引。例如：</p>
+<pre><code>opnames = {[&quot;+&quot;] = &quot;add&quot;, [&quot;-&quot;] = &quot;sub&quot;, [&quot;*&quot;] = &quot;mul&quot;, [&quot;/&quot;] = &quot;div&quot;}
+</code></pre>
+<p>另外，在表的构造器中，你可以在最后一个字段后面加上逗号：</p>
+<pre><code>a = {[1]=&quot;red&quot;, [2]=&quot;green&quot;, [3]=&quot;blue&quot;,}
+</code></pre>
+<p>特别地，你还可以使用分号来替换逗号，以划分构造器中不同的段：</p>
+<pre><code>{x=10, y=45; &quot;one&quot;, &quot;two&quot;, &quot;three&quot;}
+</code></pre>
+<h2 id="%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%88exercises%EF%BC%89">练习题（Exercises）</h2>
+<h3 id="q1-%E4%B8%8B%E5%88%97%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BE%93%E5%87%BA%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">Q1. 下列程序的输出是什么？</h3>
+<pre><code>for i = -10, 10 do
+  print(i, i % 3)
+end
+</code></pre>
+<p>暂略（请直接在 Lua 命令行看结果）。</p>
+<h3 id="q2-%E8%A1%A8%E8%BE%BE%E5%BC%8F-234-%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E9%82%A3%E4%B9%88-2-34-%E5%91%A2%EF%BC%9F">Q2. 表达式 <code>2^3^4</code> 的结果是什么？那么 2^-3^4 呢？</h3>
+<p><code>^</code> 和 <code>-</code>（一元）都是右结合的，但 <code>^</code> 的优先级高于 <code>-</code>（一元），因此:</p>
+<ul>
+<li><code>2^3^4</code> 等价于 <code>2^(3^4)</code>，其结果是 <code>2.4178516392293e+24</code></li>
+<li><code>2^-3^4</code> 等价于 <code>2^(-(3^4))</code>，其结果是 <code>4.1359030627651e-25</code></li>
+</ul>
+<h3 id="q3-%E5%9C%A8-lua-%E4%B8%AD%EF%BC%8C%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E7%94%A8%E7%B3%BB%E6%95%B0%E5%88%97%E8%A1%A8%EF%BC%88%E5%A6%82-a0-a1--an-%E6%9D%A5%E8%A1%A8%E7%A4%BA%E4%B8%80%E4%B8%AA%E5%A4%9A%E9%A1%B9%E5%BC%8F-an--xn----a1--x1--a0%E3%80%82%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AE%83%E4%BB%A5%E5%A4%9A%E9%A1%B9%E5%BC%8F%EF%BC%88%E4%BB%A5%E8%A1%A8%E7%9A%84%E5%BD%A2%E5%BC%8F%EF%BC%89%E5%92%8C-x-%E7%9A%84%E5%80%BC%E4%B8%BA%E5%8F%82%E6%95%B0%EF%BC%8C%E5%B9%B6%E8%BF%94%E5%9B%9E%E8%AF%A5%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9A%84%E5%80%BC%E3%80%82">Q3. 在 Lua 中，我们可以用系数列表（如 <code>{a0, a1, ..., an}</code> 来表示一个多项式 <code>an * x^n + ... + a1 * x^1 + a0</code>。写一个函数，它以多项式（以表的形式）和 x 的值为参数，并返回该多项式的值。</h3>
+<p>这个多项式函数的一种实现：</p>
+<pre><code>function calc(p, x)
+  local result = 0
+  for i = 1, #p do
+    result = result + p[i] * (x ^ (i - 1))
+  end
+  return result
+end
+</code></pre>
+<h3 id="q4-%E6%9C%80%E5%A4%9A%E4%BD%BF%E7%94%A8-n-%E6%AC%A1%E5%8A%A0%E6%B3%95%E5%92%8C-n-%E6%AC%A1%E4%B9%98%E6%B3%95%EF%BC%8C%E5%B9%B6%E4%B8%94%E4%B8%8D%E4%BD%BF%E7%94%A8%E6%B1%82%E5%B9%82%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%A0%E8%83%BD%E9%87%8D%E6%96%B0%E5%AE%9E%E7%8E%B0%E4%B8%8A%E8%BF%B0%E5%87%BD%E6%95%B0%E5%90%97%EF%BC%9F">Q4. 最多使用 <code>n</code> 次加法和 <code>n</code> 次乘法，并且不使用求幂运算，你能重新实现上述函数吗？</h3>
+<p>不使用求幂运算的版本：</p>
+<pre><code>function calc(p, x)
+  local result = 0
+  local e = 1
+  for i = 1, #p do
+    result = result + p[i] * e
+    e = e * x
+  end
+  return result
+end
+</code></pre>
+<h3 id="q5-%E4%B8%8D%E4%BD%BF%E7%94%A8-type-%E5%87%BD%E6%95%B0%EF%BC%8C%E5%A6%82%E4%BD%95%E6%A3%80%E6%B5%8B%E4%B8%80%E4%B8%AA%E5%80%BC%E6%98%AF%E5%90%A6%E4%B8%BA-boolean-%E7%B1%BB%E5%9E%8B%EF%BC%9F">Q5. 不使用 <code>type</code> 函数，如何检测一个值是否为 <code>boolean</code> 类型？</h3>
+<p>使用关系运算符和逻辑运算符，可以很轻易地实现：</p>
+<pre><code>function is_boolean(x)
+  return x == true or x == false
+end
+</code></pre>
+<h3 id="q6-%E8%A1%A8%E8%BE%BE%E5%BC%8F-x-and-y-and-not-z-or-not-y-and-x-%E4%B8%AD%E7%9A%84%E6%8B%AC%E5%8F%B7%E6%98%AF%E5%90%A6%E5%BF%85%E8%A6%81%EF%BC%9F%E4%BD%A0%E4%BC%9A%E6%8E%A8%E8%8D%90%E5%9C%A8%E8%BF%99%E4%B8%AA%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%AD%E7%94%A8%E6%8B%AC%E5%8F%B7%E5%90%97%EF%BC%9F">Q6. 表达式 <code>(x and y and (not z) or ((not y) and x)</code> 中的括号是否必要？你会推荐在这个表达式中用括号吗？</h3>
+<p>因为运算符的优先级，<code>not</code> 高于 <code>and</code> 高于 <code>or</code>，所以上述表达式中的括号不是必需的。但是考虑到明确性和可读性，我推荐使用括号。</p>
+<h3 id="q7-%E4%B8%8B%E9%9D%A2%E8%84%9A%E6%9C%AC%E7%9A%84%E8%BE%93%E5%87%BA%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E8%AF%B7%E8%A7%A3%E9%87%8A%E5%8E%9F%E5%9B%A0%EF%BC%9F">Q7. 下面脚本的输出是什么？请解释原因？</h3>
+<pre><code>sunday = &quot;monday&quot;; monday = &quot;sunday&quot;
+t = {sunday = &quot;monday&quot;, [sunday] = monday}
+print(t.sunday, t[sunday], t[t.sunday])
+</code></pre>
+<p>上述脚本的输出是：</p>
+<pre><code>monday   sunday    sunday
+</code></pre>
+<p>原因：表 <code>t = {sunday = &quot;monday&quot;, [sunday] = monday}</code> 等价于 <code>t = {[&quot;sunday&quot;] = &quot;monday&quot;, [&quot;monday&quot;] = &quot;sunday&quot;}</code>，而输出语句 <code>print(t.sunday, t[sunday], t[t.sunday])</code> 相当于 <code>print(t[&quot;sunday&quot;], t[&quot;monday&quot;], t[&quot;monday&quot;])</code>。</p>
+<h3 id="q8-%E5%81%87%E8%AE%BE%E4%BD%A0%E6%83%B3%E8%A6%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%A1%A8%EF%BC%8C%E5%85%B6%E4%B8%AD%E6%AF%8F%E4%B8%80%E9%A1%B9%E6%98%AF%E4%B8%80%E4%B8%AA%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%9A%84%E5%90%AB%E4%B9%89%E3%80%82%E4%BD%A0%E8%AF%A5%E4%BD%BF%E7%94%A8%E6%80%8E%E6%A0%B7%E7%9A%84%E8%A1%A8%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%9F">Q8. 假设你想要创建一个表，其中每一项是一个转义字符及其对应的含义。你该使用怎样的表构造器？</h3>
+<p>常用的数组构造器和记录构造器，都不能把转义字符作为索引，所以我选择通用构造器：</p>
+<pre><code>escnames = {
+  [&quot;\a&quot;] = &quot;bell&quot;, [&quot;\b&quot;] = &quot;back space&quot;,
+  [&quot;\f&quot;] = &quot;form feed&quot;, [&quot;\n&quot;] = &quot;newline&quot;,
+  [&quot;\r&quot;] = &quot;carriage return&quot;, [&quot;\t&quot;] = &quot;horizontal tab&quot;,
+  [&quot;\v&quot;] = &quot;vertical tab&quot;, [&quot;\\&quot;] = &quot;backslash&quot;,
+  [&quot;\&quot;&quot;] = &quot;double quote&quot;, [&quot;\'&quot;] = &quot;single quote&quot;,
+}
+</code></pre>
+
+    </body>
+    </html>

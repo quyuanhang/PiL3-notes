@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css" integrity="sha384-BTL0nVi8DnMrNdMQZG1Ww6yasK9ZGnUxL1ZWukXQ7fygA1py52yPp9W4wrR00VML" crossorigin="anonymous">
+        <style>
+/*--------------------------------------------------------------------------------------------- * Copyright (c) Microsoft Corporation. All rights reserved. * Licensed under the MIT License. See License.txt in the project root for license information. *--------------------------------------------------------------------------------------------*/ body { font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback"; font-size: 14px; padding: 0 26px; line-height: 22px; word-wrap: break-word; } #code-csp-warning { position: fixed; top: 0; right: 0; color: white; margin: 16px; text-align: center; font-size: 12px; font-family: sans-serif; background-color:#444444; cursor: pointer; padding: 6px; box-shadow: 1px 1px 1px rgba(0,0,0,.25); } #code-csp-warning:hover { text-decoration: none; background-color:#007acc; box-shadow: 2px 2px 2px rgba(0,0,0,.25); } body.scrollBeyondLastLine { margin-bottom: calc(100vh - 22px); } body.showEditorSelection .code-line { position: relative; } body.showEditorSelection .code-active-line:before, body.showEditorSelection .code-line:hover:before { content: ""; display: block; position: absolute; top: 0; left: -12px; height: 100%; } body.showEditorSelection li.code-active-line:before, body.showEditorSelection li.code-line:hover:before { left: -30px; } .vscode-light.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(0, 0, 0, 0.15); } .vscode-light.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(0, 0, 0, 0.40); } .vscode-light.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-dark.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 255, 255, 0.4); } .vscode-dark.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 255, 255, 0.60); } .vscode-dark.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-high-contrast.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 160, 0, 0.7); } .vscode-high-contrast.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 160, 0, 1); } .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before { border-left: none; } img { max-width: 100%; max-height: 100%; } a { text-decoration: none; } a:hover { text-decoration: underline; } a:focus, input:focus, select:focus, textarea:focus { outline: 1px solid -webkit-focus-ring-color; outline-offset: -1px; } hr { border: 0; height: 2px; border-bottom: 2px solid; } h1 { padding-bottom: 0.3em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; } h1, h2, h3 { font-weight: normal; } h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { font-size: inherit; line-height: auto; } table { border-collapse: collapse; } table > thead > tr > th { text-align: left; border-bottom: 1px solid; } table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td { padding: 5px 10px; } table > tbody > tr + tr > td { border-top: 1px solid; } blockquote { margin: 0 7px 0 5px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; } code { font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback"; font-size: 14px; line-height: 19px; } body.wordWrap pre { white-space: pre-wrap; } .mac code { font-size: 12px; line-height: 18px; } pre:not(.hljs), pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; } /** Theming */ pre code { color: var(--vscode-editor-foreground); } .vscode-light pre:not(.hljs), .vscode-light code > div { background-color: rgba(220, 220, 220, 0.4); } .vscode-dark pre:not(.hljs), .vscode-dark code > div { background-color: rgba(10, 10, 10, 0.4); } .vscode-high-contrast pre:not(.hljs), .vscode-high-contrast code > div { background-color: rgb(0, 0, 0); } .vscode-high-contrast h1 { border-color: rgb(0, 0, 0); } .vscode-light table > thead > tr > th { border-color: rgba(0, 0, 0, 0.69); } .vscode-dark table > thead > tr > th { border-color: rgba(255, 255, 255, 0.69); } .vscode-light h1, .vscode-light hr, .vscode-light table > tbody > tr + tr > td { border-color: rgba(0, 0, 0, 0.18); } .vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td { border-color: rgba(255, 255, 255, 0.18); } 
+</style>
+<style>
+/* Tomorrow Theme */ /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ /* Original theme - https://github.com/chriskempson/tomorrow-theme */ /* Tomorrow Comment */ .hljs-comment, .hljs-quote { color: #8e908c; } /* Tomorrow Red */ .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: #c82829; } /* Tomorrow Orange */ .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: #f5871f; } /* Tomorrow Yellow */ .hljs-attribute { color: #eab700; } /* Tomorrow Green */ .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #718c00; } /* Tomorrow Blue */ .hljs-title, .hljs-section { color: #4271ae; } /* Tomorrow Purple */ .hljs-keyword, .hljs-selector-tag { color: #8959a8; } .hljs { display: block; overflow-x: auto; color: #4d4d4c; padding: 0.5em; } .hljs-emphasis { font-style: italic; } .hljs-strong { font-weight: bold; }
+</style>
+<style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <ol start="4">
+<li>
+<p>语句（Statements）
+====================</p>
+</li>
+<li>
+<p>赋值（Assignment）</p>
+</li>
+</ol>
+<hr>
+<p><strong>单赋值</strong>（single assignment）：</p>
+<pre><code>a = &quot;hello&quot; .. &quot;world&quot;
+t.n = t.n + 1
+</code></pre>
+<p><strong>多重赋值</strong>（multiple assignment）：</p>
+<pre><code>a, b = 1, 2    -- a=1, b=2
+</code></pre>
+<p>多重赋值有以下特性：</p>
+<ul>
+<li>
+<p>首先对 <code>=</code> 右边所有的值进行求值，然后再执行赋值操作</p>
+<pre><code>  x, y = y, x    -- 交换 x 和 y 的值
+</code></pre>
+</li>
+<li>
+<p>如果变量序列的长度大于值序列的长度，则多余的变量会被赋值为<code>nil</code></p>
+<pre><code>  a, b, c = 1, 2    -- a=1, b=2, c=nil
+</code></pre>
+</li>
+<li>
+<p>如果变量序列的长度小于值序列的长度，则多余的值会被忽略</p>
+<pre><code>  a, b = 1, 2, 3    -- a=1, b=2, 3 被忽略
+</code></pre>
+</li>
+</ul>
+<p>单赋值 vs 多重赋值：</p>
+<ul>
+<li>大多数情况下，应该使用单赋值（速度更快、可读性高）</li>
+<li>多重赋值的使用场景：交换两个变量的值、收集函数返回的多个值</li>
+</ul>
+<ol start="2">
+<li>局部变量与块（Local Variables and Blocks）</li>
+</ol>
+<hr>
+<p>使用 <strong>local</strong> 语句创建<strong>局部变量</strong>：</p>
+<pre><code>local i = 1    -- i 是局部变量
+j = 2          -- j 是全局变量
+</code></pre>
+<p><strong>块</strong>（block）是指控制单元（control structure）、函数（function）、代码块（chunk）的主体部分。</p>
+<p>局部变量 vs 全局变量：</p>
+<table>
+<thead>
+<tr>
+<th>变量类型</th>
+<th>作用域</th>
+<th>生命周期</th>
+<th>访问速度</th>
+<th>是否推荐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>局部变量</td>
+<td>所在块范围</td>
+<td>从创建开始，到所在块结束</td>
+<td>快</td>
+<td>推荐（可读性高、更干净的名字空间、更早的垃圾回收）</td>
+</tr>
+<tr>
+<td>全局变量</td>
+<td>全局范围</td>
+<td>从创建开始，到被赋值为<code>nil</code>或程序终止</td>
+<td>慢</td>
+<td>尽量少用</td>
+</tr>
+</tbody>
+</table>
+<p>一个 Lua 的常见用法：</p>
+<pre><code>local foo = foo
+</code></pre>
+<p>好处：</p>
+<ul>
+<li>与全局变量 <code>foo</code> 不同的是，局部变量 <code>foo</code> 的值不会被其他模块意外修改</li>
+<li>局部变量 <code>foo</code> 拥有更快的访问速度</li>
+</ul>
+<ol start="3">
+<li>控制结构（Control Structures）</li>
+</ol>
+<hr>
+<h3 id="if-then-else">if then else</h3>
+<pre><code>if a &lt; 0 then r = 0 end
+
+if a &lt; b then
+  r = a
+else
+  r = b
+end
+
+if op == &quot;+&quot; then
+  r = a + b
+elseif op == &quot;-&quot; then
+  r = a - b
+elseif op == &quot;*&quot; then
+  r = a * b
+elseif op == &quot;/&quot; then
+  r = a / b
+else
+  error(&quot;invalid operation&quot;)
+end
+</code></pre>
+<h3 id="while">while</h3>
+<pre><code>local i = 1
+while a[i] do
+  print(a[i])
+  i = i + 1
+end
+</code></pre>
+<h3 id="repeat">repeat</h3>
+<pre><code>-- 打印第一个非空的输入行
+repeat
+  line = io.read()
+until line ~= &quot;&quot;
+print(line)
+</code></pre>
+<h3 id="for">for</h3>
+<h4 id="%E6%95%B0%E5%80%BC%E5%9E%8B-for%EF%BC%88numeric-for%EF%BC%89">数值型 for（numeric for）</h4>
+<pre><code>local a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+for i = 1, #a do
+  print(a[i])
+end
+
+for i = #a, 1, -1 do
+  print(a[i])
+end
+</code></pre>
+<p>对于 <strong>数值型 for</strong>：</p>
+<pre><code>for var = exp1, exp2, exp3 do
+  &lt;something&gt;
+end
+</code></pre>
+<p>有以下几点注意事项：</p>
+<ul>
+<li>三个表达式 <code>exp1</code>、<code>exp2</code>、<code>exp3</code> 只在循环开始前被求值一次</li>
+<li>控制变量 <code>var</code> 是局部变量，不要在循环体外使用它</li>
+<li>不要尝试修改控制变量的值，可以用 <strong>break</strong> 结束循环</li>
+</ul>
+<h4 id="%E6%B3%9B%E5%9E%8B-for%EF%BC%88generic-for%EF%BC%89">泛型 for（generic for）</h4>
+<p><strong>泛型 for</strong> 用于遍历一个迭代器函数返回的所有值：</p>
+<pre><code>-- 打印表 `t` 中的所有键/值对
+for k, v in pairs(t) do
+  print(k, v)
+end
+</code></pre>
+<p>上例中，<code>pairs</code> 是一个迭代器（遍历表），类似的迭代器还有：</p>
+<ul>
+<li><code>io.lines</code>（遍历文件行）</li>
+<li><code>ipairs</code>（遍历序列）</li>
+<li><code>string.gmatch</code>（遍历字符串）</li>
+</ul>
+<ol start="4">
+<li>break、return 和 goto</li>
+</ol>
+<hr>
+<h3 id="break">break</h3>
+<p><code>break</code> 用于终止循环（<code>for</code>、<code>repeat</code> 或者 <code>while</code>）。</p>
+<h3 id="return">return</h3>
+<p><code>return</code> 用于从函数中返回结果或者结束一个函数。<code>return</code> 有一个特殊限制：它只能作为 <strong>块</strong>（block）的最后一个语句出现：</p>
+<pre><code>-- 返回序列 a 中值 v 对应的索引
+function index(a, v)
+  for i = 1, #a do
+    if a[i] == v then
+      print(&quot;found it&quot;)
+      return i
+    end
+  end
+  print(&quot;not found&quot;)
+end
+</code></pre>
+<p>如果想在块的中间使用<code>return</code>，你需要借助于 <code>do</code> 块：</p>
+<pre><code>function foo()
+  return                --&lt;&lt; 语法错误
+  do return end         -- OK
+  &lt;其他语句&gt;
+end
+</code></pre>
+<h3 id="goto">goto</h3>
+<p><code>goto</code> 用于跳到指定标签（<code>::name::</code>）所在的代码处。其中，标签名 name 可以是任何合法的变量名。</p>
+<p>Lua 对 <code>goto</code> 语句做了一些限制：</p>
+<ul>
+<li>不能跳入一个块（block），因为块中的标签名对外不可见</li>
+<li>不能跳出一个函数（function）</li>
+<li>不能跳入一个局部变量的作用域</li>
+</ul>
+<p><code>goto</code>的典型应用是模拟实现一些 Lua 缺失的控制语句：continue、多级 break（multi-level break）、多级 continue（multi-level break）、redo、局部错误处理（local error handling）等：</p>
+<pre><code>while condition do
+  ::redo::
+  if some_condition then
+    goto redo
+  end
+  &lt;一些代码&gt;
+end
+
+while condition do
+  if some_condition then
+    goto continue
+  end
+  &lt;一些代码&gt;
+  ::continue::
+end
+</code></pre>
+<h2 id="%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%88exercises%EF%BC%89">练习题（Exercises）</h2>
+<h3 id="q1-%E5%A4%A7%E9%83%A8%E5%88%86%E7%B1%BB%E4%BC%BC-c-%E8%AF%AD%E6%B3%95%E7%9A%84%E8%AF%AD%E8%A8%80%E9%83%BD%E4%B8%8D%E6%8F%90%E4%BE%9B-elseif-%E6%9E%84%E9%80%A0%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88-lua-%E8%A6%81%E6%8F%90%E4%BE%9B%EF%BC%9F">Q1. 大部分类似 C 语法的语言都不提供 <code>elseif</code> 构造，为什么 Lua 要提供？</h3>
+<p>因为 Lua 中没有 <code>switch</code> 语句，所以在做多路选择时，经常会用到 <code>elseif</code>。</p>
+<h3 id="q2-%E5%88%97%E5%87%BA-lua-%E4%B8%AD%E6%97%A0%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88unconditional-loop%EF%BC%89%E7%9A%84-4-%E7%A7%8D%E5%86%99%E6%B3%95%E3%80%82%E4%BD%A0%E6%9B%B4%E5%96%9C%E6%AC%A2%E5%93%AA%E4%B8%80%E7%A7%8D%EF%BC%9F">Q2. 列出 Lua 中无条件循环（unconditional loop）的 4 种写法。你更喜欢哪一种？</h3>
+<p>写法 1：</p>
+<pre><code>while true do
+  &lt;一些代码&gt;
+end
+</code></pre>
+<p>写法 2：</p>
+<pre><code>repeat
+  &lt;一些代码&gt;
+until false
+</code></pre>
+<p>写法 3：</p>
+<pre><code>for i = 1, math.huge do
+  &lt;一些代码&gt;
+end
+</code></pre>
+<p>写法 4：</p>
+<pre><code>::redo:: do
+  &lt;一些代码&gt;
+  goto redo
+end
+</code></pre>
+<p>个人而言，我更喜欢第 1 种写法：简洁、直接、更符合惯例。</p>
+<h3 id="q3-%E5%BE%88%E5%A4%9A%E4%BA%BA%E4%BA%89%E8%AE%BA%E8%AF%B4-repeat-until-%E5%BE%88%E5%B0%91%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%9B%A0%E6%AD%A4%E4%B8%8D%E5%BA%94%E8%AF%A5%E5%87%BA%E7%8E%B0%E5%9C%A8%E5%83%8F-lua-%E8%BF%99%E7%A7%8D%E7%B2%BE%E7%AE%80%E5%8C%96%E7%9A%84%E8%AF%AD%E8%A8%80%E4%B8%AD%E3%80%82%E4%BD%A0%E6%80%8E%E4%B9%88%E7%9C%8B%EF%BC%9F">Q3. 很多人争论说 <code>repeat-until</code> 很少使用，因此不应该出现在像 Lua 这种精简化的语言中。你怎么看？</h3>
+<p><code>repeat-until</code> 跟 C 语言中的 <code>do-while</code> 语句很类似，对于“要预先执行一次操作，而后再根据条件来判断是否继续”的这类事务，相比 <code>while</code> 语句而言，<code>repeat-until</code> 可以让代码更简洁一些。</p>
+<p>个人平时写 Python 代码比较多，Python 的哲学之一是：用一种方法，最好是只有一种方法来做一件事。（There should be one-- and preferably only one --obvious way to do it.）如果遵循这样一种哲学，我认为，Lua 这种精简化的语言确实可以不提供 <code>repeat-until</code>。</p>
+<h3 id="q4-%E4%B8%8D%E4%BD%BF%E7%94%A8-goto%EF%BC%8C%E9%87%8D%E5%86%99%E4%BB%A5%E4%B8%8B%E7%A4%BA%E4%BE%8B%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%EF%BC%9A">Q4. 不使用 <code>goto</code>，重写以下示例中的状态机：</h3>
+<pre><code>goto room1    -- 初始房间
+
+::room1:: do
+  local move = io.read()
+  if move == &quot;south&quot; then goto room3
+  elseif move == &quot;east&quot; then goto room2
+  else
+    print(&quot;invalid move&quot;)
+    goto room1    -- 留在当前房间
+  end
+end
+
+::room2:: do
+  local move = io.read()
+  if move == &quot;south&quot; then goto room4
+  elseif move == &quot;west&quot; then goto room1
+  else
+    print(&quot;invalid move&quot;)
+    goto room2    -- 留在当前房间
+  end
+end
+
+::room3:: do
+  local move = io.read()
+  if move == &quot;north&quot; then goto room1
+  elseif move == &quot;east&quot; then goto room4
+  else
+    print(&quot;invalid move&quot;)
+    goto room3    -- 留在当前房间
+  end
+end
+
+::room4:: do
+  print(&quot;Congratulations, you won!&quot;)
+end
+</code></pre>
+<p>重写版本：</p>
+<pre><code>local room1 = {}
+local room2 = {}
+local room3 = {}
+local room4 = {}
+
+-- 建造房间 1
+room1.east = room2
+room1.south = room3
+room1.west = room1
+room1.north = room1
+
+-- 建造房间 2
+room2.east = room2
+room2.south = room4
+room2.west = room1
+room2.north = room2
+
+-- 建造房间 3
+room3.east = room4
+room3.south = room3
+room3.west = room3
+room3.north = room1
+
+-- 游戏开始
+local room = room1
+
+-- 游戏进行中
+repeat
+  local current = room
+  local move = io.read()
+  room = current[move] or current
+  if room == current then
+    print(&quot;invalid move&quot;)
+  end
+until room == room4
+
+-- 游戏结束
+print(&quot;Congratulations, you won!&quot;)
+</code></pre>
+<h3 id="q5-%E8%AF%B7%E8%A7%A3%E9%87%8A%E4%B8%BA%E4%BB%80%E4%B9%88-lua-%E8%A6%81%E9%99%90%E5%88%B6-goto-%E4%B8%8D%E8%83%BD%E8%B7%B3%E5%87%BA%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%9F%EF%BC%88%E6%8F%90%E7%A4%BA%EF%BC%9A%E4%BD%A0%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%9C%B0%E8%B7%B3%E5%87%BA%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%9F%EF%BC%89">Q5. 请解释为什么 Lua 要限制 <code>goto</code> 不能跳出一个函数？（提示：你应该如何正确地跳出一个函数？）</h3>
+<p>在 Lua 中，跳出一个函数的正确方式是使用 <code>return</code> 语句。</p>
+<h3 id="q6-%E6%9A%82%E7%95%A5">Q6. 暂略</h3>
+
+    </body>
+    </html>

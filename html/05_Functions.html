@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css" integrity="sha384-BTL0nVi8DnMrNdMQZG1Ww6yasK9ZGnUxL1ZWukXQ7fygA1py52yPp9W4wrR00VML" crossorigin="anonymous">
+        <style>
+/*--------------------------------------------------------------------------------------------- * Copyright (c) Microsoft Corporation. All rights reserved. * Licensed under the MIT License. See License.txt in the project root for license information. *--------------------------------------------------------------------------------------------*/ body { font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback"; font-size: 14px; padding: 0 26px; line-height: 22px; word-wrap: break-word; } #code-csp-warning { position: fixed; top: 0; right: 0; color: white; margin: 16px; text-align: center; font-size: 12px; font-family: sans-serif; background-color:#444444; cursor: pointer; padding: 6px; box-shadow: 1px 1px 1px rgba(0,0,0,.25); } #code-csp-warning:hover { text-decoration: none; background-color:#007acc; box-shadow: 2px 2px 2px rgba(0,0,0,.25); } body.scrollBeyondLastLine { margin-bottom: calc(100vh - 22px); } body.showEditorSelection .code-line { position: relative; } body.showEditorSelection .code-active-line:before, body.showEditorSelection .code-line:hover:before { content: ""; display: block; position: absolute; top: 0; left: -12px; height: 100%; } body.showEditorSelection li.code-active-line:before, body.showEditorSelection li.code-line:hover:before { left: -30px; } .vscode-light.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(0, 0, 0, 0.15); } .vscode-light.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(0, 0, 0, 0.40); } .vscode-light.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-dark.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 255, 255, 0.4); } .vscode-dark.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 255, 255, 0.60); } .vscode-dark.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-high-contrast.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 160, 0, 0.7); } .vscode-high-contrast.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 160, 0, 1); } .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before { border-left: none; } img { max-width: 100%; max-height: 100%; } a { text-decoration: none; } a:hover { text-decoration: underline; } a:focus, input:focus, select:focus, textarea:focus { outline: 1px solid -webkit-focus-ring-color; outline-offset: -1px; } hr { border: 0; height: 2px; border-bottom: 2px solid; } h1 { padding-bottom: 0.3em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; } h1, h2, h3 { font-weight: normal; } h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { font-size: inherit; line-height: auto; } table { border-collapse: collapse; } table > thead > tr > th { text-align: left; border-bottom: 1px solid; } table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td { padding: 5px 10px; } table > tbody > tr + tr > td { border-top: 1px solid; } blockquote { margin: 0 7px 0 5px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; } code { font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback"; font-size: 14px; line-height: 19px; } body.wordWrap pre { white-space: pre-wrap; } .mac code { font-size: 12px; line-height: 18px; } pre:not(.hljs), pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; } /** Theming */ pre code { color: var(--vscode-editor-foreground); } .vscode-light pre:not(.hljs), .vscode-light code > div { background-color: rgba(220, 220, 220, 0.4); } .vscode-dark pre:not(.hljs), .vscode-dark code > div { background-color: rgba(10, 10, 10, 0.4); } .vscode-high-contrast pre:not(.hljs), .vscode-high-contrast code > div { background-color: rgb(0, 0, 0); } .vscode-high-contrast h1 { border-color: rgb(0, 0, 0); } .vscode-light table > thead > tr > th { border-color: rgba(0, 0, 0, 0.69); } .vscode-dark table > thead > tr > th { border-color: rgba(255, 255, 255, 0.69); } .vscode-light h1, .vscode-light hr, .vscode-light table > tbody > tr + tr > td { border-color: rgba(0, 0, 0, 0.18); } .vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td { border-color: rgba(255, 255, 255, 0.18); } 
+</style>
+<style>
+/* Tomorrow Theme */ /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ /* Original theme - https://github.com/chriskempson/tomorrow-theme */ /* Tomorrow Comment */ .hljs-comment, .hljs-quote { color: #8e908c; } /* Tomorrow Red */ .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: #c82829; } /* Tomorrow Orange */ .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: #f5871f; } /* Tomorrow Yellow */ .hljs-attribute { color: #eab700; } /* Tomorrow Green */ .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #718c00; } /* Tomorrow Blue */ .hljs-title, .hljs-section { color: #4271ae; } /* Tomorrow Purple */ .hljs-keyword, .hljs-selector-tag { color: #8959a8; } .hljs { display: block; overflow-x: auto; color: #4d4d4c; padding: 0.5em; } .hljs-emphasis { font-style: italic; } .hljs-strong { font-weight: bold; }
+</style>
+<style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <ol start="5">
+<li>
+<p>函数（Functions）
+===================</p>
+<p>-- 一个名为 show 的函数
+-- 函数参数（a、b）的工作原理，与<code>局部变量</code>相同
+function show(a, b)
+print(a, b)
+end</p>
+<p>-- 函数对多个参数的处理规则，与<code>多重赋值</code>相同
+show(1)         -- 输出：1    nil
+show(1, 2)      -- 输出：1    2
+show(1, 2, 3)   -- 输出：1    2    (3 被忽略)</p>
+<p>-- 默认参数的用法
+function incr(v, n)
+n = n or 1    -- n 的默认值为 1
+return v + n
+end</p>
+<p>incr(10)       -- 11
+incr(10, 2)    -- 12</p>
+</li>
+<li>
+<p>多个结果（Multiple Results）</p>
+</li>
+</ol>
+<hr>
+<p>在 Lua 中，函数可以返回多个结果。</p>
+<pre><code>function foo0() end                    -- 不返回结果
+function foo1() return &quot;a&quot; end         -- 返回 1 个结果
+function foo2() return &quot;a&quot;, &quot;b&quot; end    -- 返回 2 个结果
+</code></pre>
+<p>对于返回多个结果的函数（以 <code>foo2</code> 为例）：</p>
+<ul>
+<li>
+<p>作为语句调用时，返回的结果全部被忽略</p>
+<pre><code>  foo2()
+</code></pre>
+</li>
+<li>
+<p>在表达式中调用时，只保留第一个结果</p>
+<pre><code>  &quot;it is: &quot; .. foo2()    -- &quot;it is: a&quot;
+</code></pre>
+</li>
+<li>
+<p>出现在 <code>多重赋值</code>、<code>函数调用的参数</code>、<code>表构造</code> 和 <code>return 语句</code> 中，并且作为其中最后一个（或者唯一的）表达式时，返回的所有结果都会被保留</p>
+<pre><code>  [[ 多重赋值 ]]
+
+  -- 唯一的表达式（OK）
+  x, y = foo2()            -- x=&quot;a&quot;, y=&quot;b&quot;
+
+  -- 最后一个的表达式（OK）
+  x, y, z = &quot;c&quot;, foo2()    -- x=&quot;c&quot;, y=&quot;a&quot;, c=&quot;b&quot;
+
+  -- 不满足规定
+  x, y, z = foo2(), &quot;c&quot;    -- x=&quot;a&quot;, y=&quot;c&quot;, z=nil
+
+  [[ 函数调用的参数 ]]
+
+  -- 唯一的表达式（OK）
+  print(foo2())            -- 输出：a    b
+
+  -- 最后一个的表达式（OK）
+  print(&quot;c&quot;, foo2())       -- 输出：c    a    b
+
+  -- 不满足规定
+  print(foo2(), &quot;c&quot;)       -- 输出：a    c
+
+  [[ 表构造 ]]
+
+  -- 唯一的表达式（OK）
+  t = {foo2()}             -- t={&quot;a&quot;, &quot;b&quot;}
+
+  -- 最后一个的表达式（OK）
+  t = {&quot;c&quot;, foo2()}        -- t={&quot;c&quot;, &quot;a&quot;, &quot;b&quot;}
+
+  -- 不满足规定
+  t = {foo2(), &quot;c&quot;}        -- t={&quot;a&quot;, &quot;c&quot;}
+
+  [[ return 语句 ]]
+
+  -- 唯一的表达式（OK）
+  return foo2()            -- 返回：&quot;a&quot;, &quot;b&quot;
+
+  -- 最后一个的表达式（OK）
+  return &quot;c&quot;, foo2()       -- 返回：&quot;c&quot;, &quot;a&quot;, &quot;b&quot;
+
+  -- 不满足规定
+  return foo2(), &quot;c&quot;       -- 返回：&quot;a&quot;, &quot;c&quot;
+</code></pre>
+</li>
+</ul>
+<p>不返回结果（<code>foo0</code>） vs 返回结果（<code>foo1</code>）：</p>
+<pre><code>x = foo0()       -- x=nil
+x = foo1()       -- x=&quot;a&quot;
+
+print(foo0())    -- 输出：（空）
+print(foo1())    -- 输出：a
+
+t = {foo0()}             -- t={} （空表）
+t = {foo1()}             -- t={&quot;a&quot;}
+t = {foo0(), foo1()}     -- t={nil, &quot;a&quot;}
+
+return foo0()    -- 返回：（空）
+return foo1()    -- 返回：&quot;a&quot;
+</code></pre>
+<p>调用函数时，多加一对括号，可以强制只返回一个结果：</p>
+<pre><code>(foo0())    -- nil
+(foo1())    -- &quot;a&quot;
+(foo2())    -- &quot;a&quot;
+</code></pre>
+<p>借助 <code>table.unpack</code> 可以实现：以任何序列（即不存在 <code>nil</code> 的表）作为参数，动态调用任何函数。</p>
+<pre><code>local f = string.find
+local a = {&quot;hello&quot;, &quot;ll&quot;}
+f(table.unpack(a))           -- 等价于：string.find(&quot;hello&quot;, &quot;ll&quot;)
+</code></pre>
+<ol start="2">
+<li>可变参数函数（Variadic Functions）</li>
+</ol>
+<hr>
+<p><strong>可变参数函数</strong> 是指一个函数，它可以接收个数可变的参数。例如 <code>print</code> 就是一个可变参数函数。</p>
+<pre><code>-- 将参数作为结果直接返回
+function identity(...)
+  return ...
+end
+
+identity(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)    -- &quot;a&quot;, &quot;b&quot;, &quot;c&quot;
+</code></pre>
+<p>参数列表中的三个点 <code>(...)</code> 表明函数 <code>foo</code> 是可变参数的（variadic）。在函数内部，可以通过表达式 <code>...</code> 来获取实际传递给函数的参数，表达式 <code>...</code> 被称为 <em>可变参数表达式</em>（vagrag expression），它的行为与“返回多个结果的函数”类似。</p>
+<pre><code>-- 以下两个函数 show1 和 show2 的功能等价
+function show1(x, y, z)
+  print(x, y, z)
+end
+
+function show2(...)
+  local x, y, z = ...
+  print(x, y, z)
+end
+</code></pre>
+<p>可变参数函数也可以有任意个数的固定参数，但固定参数必须出现在可变参数之前：</p>
+<pre><code>function fwrite(fmt, ...)
+  return io.write(string.format(fmt, ...))
+end
+
+fwrite()                -- fmt=nil, 没有额外参数（会报错，因为 string.format 需要一个字符串参数）
+fwrite(&quot;a&quot;)             -- fmt=&quot;a&quot;, 没有额外参数
+fwrite(&quot;%d%d&quot;, 4, 5)    -- fmt=&quot;%d%d&quot;, 额外参数：4, 5
+</code></pre>
+<p>如果可变参数中不存在 <code>nil</code>，则可以在函数内部借助 <code>{...}</code> 来收集或遍历所有参数；如果可变参数中存在 <code>nil</code>，<code>{...}</code> 就不再是一个合法的序列，此时就需要借助 <code>table.pack</code> 函数（由 <code>table.pack</code> 返回的表，其中包含一个额外的字段 <code>n</code>，它记录了函数的实际参数个数）。</p>
+<pre><code>-- 可变参数中不存在 nil
+function sum(...)
+  local s = 0
+  for i, v in ipairs({...}) do
+    s = s + v
+  end
+  return s
+end
+
+add()           -- 0
+add(1)          -- 1
+add(1, 2, 3)    -- 6
+
+-- 可变参数中存在 nil
+function has_nils(...)
+  local arg = table.pack(...)
+  for i = 1, arg.n do
+    if arg[i] == nil then
+      return true
+    end
+  end
+  return false
+end
+
+has_nils()             -- false
+has_nils(nil)          -- true
+has_nils(1, 2)         -- false
+has_nils(1, nil, 3)    -- true
+</code></pre>
+<p>如果可变参数中不可能有 <code>nil</code> 值，则建议使用 <code>{...}</code>（而不是 <code>table.pack(...)</code>），因为它更简洁、速度更快。</p>
+<ol start="3">
+<li>命名参数（Named Arguments）</li>
+</ol>
+<hr>
+<p>在 Lua 中，函数参数的传递机制都是按位置的（positional）：调用函数时，第一个实参的值传给第一个形参，以此类推。</p>
+<p>Lua 不直接支持 <strong>命名参数</strong> 的语法，但是可以借助<code>表</code>来实现：将所有参数打包到一个表，然后以这个表为函数的唯一参数。</p>
+<pre><code>function rename(arg)
+  return os.rename(arg.old, arg.new)
+end
+
+rename({old=&quot;old.lua&quot;, new=&quot;new.lua&quot;})
+</code></pre>
+<h2 id="%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%88exercises%EF%BC%89">练习题（Exercises）</h2>
+<h3 id="q1-%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AE%83%E6%8E%A5%E6%94%B6%E4%BB%BB%E6%84%8F%E4%B8%AA%E6%95%B0%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E5%B9%B6%E8%BF%94%E5%9B%9E%E8%BF%99%E4%BA%9B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%BF%9E%E6%8E%A5%E3%80%82">Q1. 写一个函数，它接收任意个数的字符串，并返回这些字符串的连接。</h3>
+<pre><code>function concatenate(...)
+  local final = &quot;&quot;
+  for i, s in ipairs({...}) do
+    final = final .. s
+  end
+  return final
+end
+</code></pre>
+<h3 id="q2-%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AE%83%E6%8E%A5%E6%94%B6%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%EF%BC%8C%E5%B9%B6%E6%89%93%E5%8D%B0%E5%87%BA%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E3%80%82%E5%A6%82%E6%9E%9C%E4%BD%BF%E7%94%A8-tableunpack%EF%BC%8C%E8%AF%B7%E6%AF%94%E8%BE%83%E4%BC%98%E7%BC%BA%E7%82%B9%E3%80%82">Q2. 写一个函数，它接收一个数组，并打印出数组中的所有元素。如果使用 table.unpack，请比较优缺点。</h3>
+<pre><code>function print_all(array)
+  print(table.unpack(array))
+end
+</code></pre>
+<p>优点：简单，缺点：？</p>
+<h3 id="q3-%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AE%83%E6%8E%A5%E6%94%B6%E4%BB%BB%E6%84%8F%E4%B8%AA%E6%95%B0%E7%9A%84%E5%80%BC%EF%BC%8C%E5%B9%B6%E8%BF%94%E5%9B%9E%E9%99%A4%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%A4%96%E7%9A%84%E6%89%80%E6%9C%89%E5%80%BC%E3%80%82">Q3. 写一个函数，它接收任意个数的值，并返回除第一个外的所有值。</h3>
+<pre><code>function all_except_first(first, ...)
+  return ...
+end
+</code></pre>
+<h3 id="q4-%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E5%AE%83%E6%8E%A5%E6%94%B6%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%EF%BC%8C%E5%B9%B6%E6%89%93%E5%8D%B0%E5%87%BA%E6%95%B0%E7%BB%84%E4%B8%AD%E5%85%83%E7%B4%A0%E7%9A%84%E6%89%80%E6%9C%89%E7%BB%84%E5%90%88%E3%80%82">Q4. 写一个函数，它接收一个数组，并打印出数组中元素的所有组合。</h3>
+<p>暂略</p>
+
+    </body>
+    </html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css" integrity="sha384-BTL0nVi8DnMrNdMQZG1Ww6yasK9ZGnUxL1ZWukXQ7fygA1py52yPp9W4wrR00VML" crossorigin="anonymous">
+        <style>
+/*--------------------------------------------------------------------------------------------- * Copyright (c) Microsoft Corporation. All rights reserved. * Licensed under the MIT License. See License.txt in the project root for license information. *--------------------------------------------------------------------------------------------*/ body { font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback"; font-size: 14px; padding: 0 26px; line-height: 22px; word-wrap: break-word; } #code-csp-warning { position: fixed; top: 0; right: 0; color: white; margin: 16px; text-align: center; font-size: 12px; font-family: sans-serif; background-color:#444444; cursor: pointer; padding: 6px; box-shadow: 1px 1px 1px rgba(0,0,0,.25); } #code-csp-warning:hover { text-decoration: none; background-color:#007acc; box-shadow: 2px 2px 2px rgba(0,0,0,.25); } body.scrollBeyondLastLine { margin-bottom: calc(100vh - 22px); } body.showEditorSelection .code-line { position: relative; } body.showEditorSelection .code-active-line:before, body.showEditorSelection .code-line:hover:before { content: ""; display: block; position: absolute; top: 0; left: -12px; height: 100%; } body.showEditorSelection li.code-active-line:before, body.showEditorSelection li.code-line:hover:before { left: -30px; } .vscode-light.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(0, 0, 0, 0.15); } .vscode-light.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(0, 0, 0, 0.40); } .vscode-light.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-dark.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 255, 255, 0.4); } .vscode-dark.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 255, 255, 0.60); } .vscode-dark.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-high-contrast.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 160, 0, 0.7); } .vscode-high-contrast.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 160, 0, 1); } .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before { border-left: none; } img { max-width: 100%; max-height: 100%; } a { text-decoration: none; } a:hover { text-decoration: underline; } a:focus, input:focus, select:focus, textarea:focus { outline: 1px solid -webkit-focus-ring-color; outline-offset: -1px; } hr { border: 0; height: 2px; border-bottom: 2px solid; } h1 { padding-bottom: 0.3em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; } h1, h2, h3 { font-weight: normal; } h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { font-size: inherit; line-height: auto; } table { border-collapse: collapse; } table > thead > tr > th { text-align: left; border-bottom: 1px solid; } table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td { padding: 5px 10px; } table > tbody > tr + tr > td { border-top: 1px solid; } blockquote { margin: 0 7px 0 5px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; } code { font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback"; font-size: 14px; line-height: 19px; } body.wordWrap pre { white-space: pre-wrap; } .mac code { font-size: 12px; line-height: 18px; } pre:not(.hljs), pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; } /** Theming */ pre code { color: var(--vscode-editor-foreground); } .vscode-light pre:not(.hljs), .vscode-light code > div { background-color: rgba(220, 220, 220, 0.4); } .vscode-dark pre:not(.hljs), .vscode-dark code > div { background-color: rgba(10, 10, 10, 0.4); } .vscode-high-contrast pre:not(.hljs), .vscode-high-contrast code > div { background-color: rgb(0, 0, 0); } .vscode-high-contrast h1 { border-color: rgb(0, 0, 0); } .vscode-light table > thead > tr > th { border-color: rgba(0, 0, 0, 0.69); } .vscode-dark table > thead > tr > th { border-color: rgba(255, 255, 255, 0.69); } .vscode-light h1, .vscode-light hr, .vscode-light table > tbody > tr + tr > td { border-color: rgba(0, 0, 0, 0.18); } .vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td { border-color: rgba(255, 255, 255, 0.18); } 
+</style>
+<style>
+/* Tomorrow Theme */ /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ /* Original theme - https://github.com/chriskempson/tomorrow-theme */ /* Tomorrow Comment */ .hljs-comment, .hljs-quote { color: #8e908c; } /* Tomorrow Red */ .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: #c82829; } /* Tomorrow Orange */ .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: #f5871f; } /* Tomorrow Yellow */ .hljs-attribute { color: #eab700; } /* Tomorrow Green */ .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #718c00; } /* Tomorrow Blue */ .hljs-title, .hljs-section { color: #4271ae; } /* Tomorrow Purple */ .hljs-keyword, .hljs-selector-tag { color: #8959a8; } .hljs { display: block; overflow-x: auto; color: #4d4d4c; padding: 0.5em; } .hljs-emphasis { font-style: italic; } .hljs-strong { font-weight: bold; }
+</style>
+<style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="9-%E5%8D%8F%E7%A8%8B%EF%BC%88coroutines%EF%BC%89">9. 协程（Coroutines）</h1>
+<p>一个 <code>协程</code> 类似于多线程概念中的一个线程：它是一个执行序列，有自己的堆栈、自己的局部变量、自己的指令指针；但与此同时，它又与其他协程共享全局变量和其他大部分东西。</p>
+<p>线程与协程的主要区别在于：</p>
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>线程</th>
+<th>协程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>并行性</strong></td>
+<td>在多核机器上，多个线程（理论上）可并行执行</td>
+<td>同一时间，只能有一个协程处于执行状态</td>
+</tr>
+<tr>
+<td><strong>协作性</strong></td>
+<td>线程之间没有协作：线程的切换，由操作系统进行调度</td>
+<td>协程之间相互协作：协程的切换，需要由执行中的协程主动交出执行权</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-%E5%8D%8F%E7%A8%8B%E5%9F%BA%E7%A1%80%EF%BC%88coroutine-basics%EF%BC%89">1. 协程基础（Coroutine Basics）</h2>
+<p>Lua 把所有协程相关的函数都打包到了表 <code>coroutine</code> 中：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>coroutine.create</code></td>
+<td>创建一个协程</td>
+</tr>
+<tr>
+<td><code>coroutine.consume</code></td>
+<td>（重新）开始执行一个协程</td>
+</tr>
+<tr>
+<td><code>coroutine.yield</code></td>
+<td>暂停执行一个协程</td>
+</tr>
+<tr>
+<td><code>coroutine.status</code></td>
+<td>获取协程的执行状态</td>
+</tr>
+</tbody>
+</table>
+<p>一个简单的示例：</p>
+<pre><code>co = coroutine.create(function()
+  for i = 1, 2 do
+    print(&quot;co&quot;, i)
+    coroutine.yield()
+  end
+end)
+
+# 协程的类型是`thread`，创建后的初始状态是`suspended`
+print(co)                    --&gt; thread: 0x77b380
+print(coroutine.status(co))  --&gt; suspended
+
+# 第一次执行，打印后暂停
+coroutine.resume(co)         --&gt; 打印：co    1；返回：true
+print(coroutine.status(co))  --&gt; suspended
+
+# 第二次执行，打印后暂停
+coroutine.resume(co)         --&gt; 打印：co    2；返回：true
+print(coroutine.status(co))  --&gt; suspended
+
+# 第三次执行，协程执行结束
+coroutine.resume(co)         --&gt; 没有打印；返回：true
+print(coroutine.status(co))  --&gt; dead
+
+# 已经结束的协程，不能再执行
+coroutine.resume(co)         --&gt; 没有打印；返回：false  cannot resume dead coroutine
+print(coroutine.status(co))  --&gt; dead
+</code></pre>
+<p>协程的执行状态，除了 <code>suspended</code>、<code>running</code> 和 <code>dead</code> 外，还有 <code>normal</code>。如果一个协程正在执行另一个协程，此时，我们称第一个协程处于 <code>normal</code> 状态。</p>
+<p>协程的参数和返回值的处理规则：</p>
+<ol>
+<li>
+<p><code>resume</code> 的额外参数会传递给协程主函数</p>
+<pre><code> co = coroutine.create(function(a, b, c)
+   print(a, b, c + 2)
+ end)
+ coroutine.resume(co, 1, 2, 3)  --&gt; 打印：1    2   5
+</code></pre>
+</li>
+<li>
+<p>如果协程主函数中有 <code>yield</code> 调用，则传递给 <code>yield</code> 函数的参数就是 <code>resume</code> 的返回值</p>
+<pre><code> co = coroutine.create(function(a, b)
+   coroutine.yield(a + b, a - b)
+ end)
+ coroutine.resume(co, 20, 10)  --&gt; 返回：true    30    10
+</code></pre>
+</li>
+<li>
+<p>如果协程主函数中有 <code>yield</code> 调用，则传递给 <code>resume</code> 函数的额外参数就是 <code>yield</code> 的返回值</p>
+<pre><code> co = coroutine.create(function(a, b)
+   print(&quot;main&quot;, a, b)
+   print(&quot;yield&quot;, coroutine.yield())
+ end)
+ coroutine.resume(co, 1, 2)  --&gt; 打印：main     1   2
+ coroutine.resume(co, 1, 2)  --&gt; 打印：yield    1   2
+</code></pre>
+</li>
+<li>
+<p>如果协程主函数有 <code>return</code> 语句，则 <code>return</code> 的值也是 <code>resume</code> 函数的返回值</p>
+<pre><code> co = coroutine.create(function()
+   return 6, 7
+ end)
+ coroutine.resume(co)  --&gt; 返回：true     6   7
+</code></pre>
+</li>
+</ol>
+<h2 id="2-%E7%AE%A1%E9%81%93%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%88pipes-and-filters%EF%BC%89">2. 管道与过滤器（Pipes and Filters）</h2>
+<p>暂略</p>
+<h2 id="3-%E7%94%A8%E5%8D%8F%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88coroutines-as-iterators%EF%BC%89">3. 用协程实现迭代器（Coroutines as Iterators）</h2>
+<p>使用协程时，Lua 中有一种惯用模式：创建一个函数，该函数会在内部创建一个协程，并且会返回另一个用于执行该协程的函数。例如：</p>
+<pre><code>function permutations(a)
+  local co = coroutine.create(function() permgen(a) end)
+  return function()
+    local code, res = coroutine.resume(co)
+    return res
+  end
+end
+</code></pre>
+<p>Lua 还专门为此提供了一个便利函数 <code>coroutine.wrap</code>。借助于 <code>coroutine.wrap</code> 函数，我们可以更轻松地实现上述函数：</p>
+<pre><code>function permutations(a)
+  return coroutine.wrap(function() permgen(a) end)
+end
+</code></pre>
+<p>与 <code>coroutine.create</code> 类似，<code>coroutine.wrap</code> 也会创建一个协程，但是二者的区别在于：</p>
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th><code>coroutine.create</code></th>
+<th><code>coroutine.wrap</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>返回值</td>
+<td>返回一个协程</td>
+<td>返回一个函数，调用该函数会触发执行其内部的协程</td>
+</tr>
+<tr>
+<td>错误处理</td>
+<td>执行协程出错时，<code>resume</code> 会返回错误信息</td>
+<td>调用函数出错时，会直接抛出错误</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td>高</td>
+<td>低</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-%E9%9D%9E%E6%8A%A2%E5%8D%A0%E5%BC%8F%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%88non-preemptive-multithreading%EF%BC%89">4. 非抢占式的多线程（Non-Preemptive Multithreading）</h2>
+<p>与多线程不同，协程之间是非抢占式的：协程的执行权切换是主动的、明确的。因此，借助协程，可以实现非抢占式的多线程。但这种非抢占性也有它的缺点：如果一个协程的执行被阻塞，整个程序也会随之被阻塞。这个问题的解决办法是：将阻塞操作转换为非阻塞操作。</p>
+<p>例如，如果我们想要下载多个网页，使用协程可以很轻易地实现并发下载。以下是实现该功能的全部代码：</p>
+<pre><code>local socket = require &quot;socket&quot;
+
+-- Download a Web page
+function download(host, file)
+  local c = assert(socket.connect(host, 80))
+  local count = 0  -- counts the number of bytes read
+  c:send(&quot;GET &quot; .. file ..  &quot; HTTP/1.0\r\n\r\n&quot;)
+  while true do
+    local s, status = receive(c)
+    count = count + #s
+    if status == &quot;closed&quot; then break end
+  end
+  c:close()
+  print(file, count)
+end
+
+-- Receive the file stream of the Web page
+function receive(connection)
+  connection:settimeout(0)  -- do not block
+  local s, status, partial = connection:receive(2^10)  -- in blocks of 1KB
+  if status == &quot;timeout&quot; then
+    coroutine.yield(connection)  -- yield non-false value to indicate unfinished
+  end
+  return s or partial, status
+end
+
+-- The dispatcher
+threads = {}  -- list of all live threads
+
+function get()
+  -- create coroutine
+  local co = coroutine.create(function()
+    download(host, file)
+  end)
+  -- insert it in the list
+  table.insert(threads, co)
+end
+
+function dispatch()
+  local i = 1
+  local timedout = {}
+  while true do
+    if threads[i] == nil then  -- no more threads
+      if threads[1] == nil then break end
+      i = 1
+      timedout = {}
+    end
+    local status, res = coroutine.resume(threads[i])
+    if not res then  -- thread finished its task?
+      table.remove(threads, i)
+    else
+      i = i + 1
+      timedout[#timedout + 1] = res
+      if #timedout == #threads then  -- all threads blocked?
+        socket.select(timedout)  -- wait for any connection to change status
+      end
+    end
+  end
+end
+</code></pre>
+<p>上述程序的使用方式如下：</p>
+<pre><code>host = &quot;www.w3.org&quot;
+
+get(host, &quot;/TR/html401/html40.txt&quot;)
+get(host, &quot;/TR/2002/REC-xhtml1-20020801/xhtml1.pdf&quot;)
+get(host, &quot;/TR/REC-html32.html&quot;)
+get(host, &quot;/TR/2000/REC-DOM-Level-2-Core-20001113/DOM2-Core.txt&quot;)
+
+dispatch()  -- main loop
+</code></pre>
+<h2 id="%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%88exercises%EF%BC%89">练习题（Exercises）</h2>
+<p>暂略</p>
+
+    </body>
+    </html>

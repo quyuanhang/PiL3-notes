@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css" integrity="sha384-BTL0nVi8DnMrNdMQZG1Ww6yasK9ZGnUxL1ZWukXQ7fygA1py52yPp9W4wrR00VML" crossorigin="anonymous">
+        <style>
+/*--------------------------------------------------------------------------------------------- * Copyright (c) Microsoft Corporation. All rights reserved. * Licensed under the MIT License. See License.txt in the project root for license information. *--------------------------------------------------------------------------------------------*/ body { font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback"; font-size: 14px; padding: 0 26px; line-height: 22px; word-wrap: break-word; } #code-csp-warning { position: fixed; top: 0; right: 0; color: white; margin: 16px; text-align: center; font-size: 12px; font-family: sans-serif; background-color:#444444; cursor: pointer; padding: 6px; box-shadow: 1px 1px 1px rgba(0,0,0,.25); } #code-csp-warning:hover { text-decoration: none; background-color:#007acc; box-shadow: 2px 2px 2px rgba(0,0,0,.25); } body.scrollBeyondLastLine { margin-bottom: calc(100vh - 22px); } body.showEditorSelection .code-line { position: relative; } body.showEditorSelection .code-active-line:before, body.showEditorSelection .code-line:hover:before { content: ""; display: block; position: absolute; top: 0; left: -12px; height: 100%; } body.showEditorSelection li.code-active-line:before, body.showEditorSelection li.code-line:hover:before { left: -30px; } .vscode-light.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(0, 0, 0, 0.15); } .vscode-light.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(0, 0, 0, 0.40); } .vscode-light.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-dark.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 255, 255, 0.4); } .vscode-dark.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 255, 255, 0.60); } .vscode-dark.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-high-contrast.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 160, 0, 0.7); } .vscode-high-contrast.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 160, 0, 1); } .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before { border-left: none; } img { max-width: 100%; max-height: 100%; } a { text-decoration: none; } a:hover { text-decoration: underline; } a:focus, input:focus, select:focus, textarea:focus { outline: 1px solid -webkit-focus-ring-color; outline-offset: -1px; } hr { border: 0; height: 2px; border-bottom: 2px solid; } h1 { padding-bottom: 0.3em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; } h1, h2, h3 { font-weight: normal; } h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { font-size: inherit; line-height: auto; } table { border-collapse: collapse; } table > thead > tr > th { text-align: left; border-bottom: 1px solid; } table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td { padding: 5px 10px; } table > tbody > tr + tr > td { border-top: 1px solid; } blockquote { margin: 0 7px 0 5px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; } code { font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback"; font-size: 14px; line-height: 19px; } body.wordWrap pre { white-space: pre-wrap; } .mac code { font-size: 12px; line-height: 18px; } pre:not(.hljs), pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; } /** Theming */ pre code { color: var(--vscode-editor-foreground); } .vscode-light pre:not(.hljs), .vscode-light code > div { background-color: rgba(220, 220, 220, 0.4); } .vscode-dark pre:not(.hljs), .vscode-dark code > div { background-color: rgba(10, 10, 10, 0.4); } .vscode-high-contrast pre:not(.hljs), .vscode-high-contrast code > div { background-color: rgb(0, 0, 0); } .vscode-high-contrast h1 { border-color: rgb(0, 0, 0); } .vscode-light table > thead > tr > th { border-color: rgba(0, 0, 0, 0.69); } .vscode-dark table > thead > tr > th { border-color: rgba(255, 255, 255, 0.69); } .vscode-light h1, .vscode-light hr, .vscode-light table > tbody > tr + tr > td { border-color: rgba(0, 0, 0, 0.18); } .vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td { border-color: rgba(255, 255, 255, 0.18); } 
+</style>
+<style>
+/* Tomorrow Theme */ /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ /* Original theme - https://github.com/chriskempson/tomorrow-theme */ /* Tomorrow Comment */ .hljs-comment, .hljs-quote { color: #8e908c; } /* Tomorrow Red */ .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: #c82829; } /* Tomorrow Orange */ .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: #f5871f; } /* Tomorrow Yellow */ .hljs-attribute { color: #eab700; } /* Tomorrow Green */ .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #718c00; } /* Tomorrow Blue */ .hljs-title, .hljs-section { color: #4271ae; } /* Tomorrow Purple */ .hljs-keyword, .hljs-selector-tag { color: #8959a8; } .hljs { display: block; overflow-x: auto; color: #4d4d4c; padding: 0.5em; } .hljs-emphasis { font-style: italic; } .hljs-strong { font-weight: bold; }
+</style>
+<style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="2-%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%80%BC%EF%BC%88types-and-values%EF%BC%89">2. 类型与值（Types and Values）</h1>
+<p>Lua 是一门动态类型语言，它没有类型定义，每一个值都自带类型。</p>
+<p>Lua 中有八个基本类型：<code>nil</code>、<code>boolean</code>、<code>number</code>、<code>string</code>、<code>userdata</code>、<code>function</code>、<code>thread</code> 和 <code>table</code>。借助 <code>type</code> 函数，可以得到任何值对应的类型名称：</p>
+<pre><code>print(type(nil))            --&gt; nil
+print(type(true))           --&gt; boolean
+print(type(10.4 * 3))       --&gt; number
+print(type(&quot;Hello world&quot;))  --&gt; string
+print(type(print))          --&gt; function
+print(type({}))             --&gt; table
+print(type(type))           --&gt; string
+</code></pre>
+<p>在 Lua 中，一个变量可以包含任何类型的值。虽然滥用会造成代码混乱，但在保持一个类型的同时，适当混用 <code>nil</code> 也是推荐的。</p>
+<h2 id="1-nil">1. Nil</h2>
+<p><code>nil</code> 是一个特殊的类型，它只有一个值，<strong>nil</strong>，主要用于与其他值做区分。Lua 使用 nil 表示空值，或者没有被赋值。</p>
+<p>例如，一个全局变量在没有被赋值前，默认值就是 nil；你也可以给一个全局变量赋值为 nil，以删除该变量。</p>
+<h2 id="2-%E5%B8%83%E5%B0%94%E5%80%BC%EF%BC%88booleans%EF%BC%89">2. 布尔值（Booleans）</h2>
+<p><code>boolean</code> 类型有两个值，<strong>false</strong> 和 <strong>true</strong>，用于表示传统的布尔值。</p>
+<p>但在 Lua 的条件测试（conditional tests）中，任何值都可以作为控制结构（control structures）中的条件，它们的真假特性如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>条件假</th>
+<th>条件真</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nil</td>
+<td>nil</td>
+<td></td>
+</tr>
+<tr>
+<td>布尔值</td>
+<td><strong>false</strong></td>
+<td><strong>true</strong></td>
+</tr>
+<tr>
+<td>数字</td>
+<td></td>
+<td>所有数字（包括 <code>0</code>）</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td></td>
+<td>所有字符串（包括空字符串 <code>&quot;&quot;</code>）</td>
+</tr>
+<tr>
+<td>其他类型</td>
+<td></td>
+<td>所有其他类型的值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-%E6%95%B0%E5%AD%97%EF%BC%88numbers%EF%BC%89">3. 数字（Numbers）</h2>
+<p><code>number</code> 类型表示所有实数（双精度浮点数）。在 Lua 中，没有整型。</p>
+<p>有人担心用双精度浮点数表示整数会导致误差。实际上，按照 IEEE 754 标准，任何值小于 2 的 53 次方（约等于 10 的 16 次方）的整数，用双精度浮点数来表示都不会有误差。特别地，Lua 中的一个数字可以无误差地表示所有 32 位整数。</p>
+<p>Lua 中的数字常量，除了整数部分，也可以包括小数部分和十进制指数部分。例如：</p>
+<pre><code>4    0.4    4.57e-3    0.3e12    5E+20
+</code></pre>
+<p>数字常量还可以表示成十六进制的形式（以 <code>0x</code> 为前缀）；从 Lua 5.2 开始，十六进制常量还可以包括小数部分和二进制指数部分。例如：</p>
+<pre><code>0xff (255)    0x1A3 (419)    0x0.2 (0.125)    0x1p-1 (0.5)    0xa.bp2 (42.75)
+</code></pre>
+<p>其中，括号里面是对应的十进制表示。</p>
+<h2 id="4-%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88strings%EF%BC%89">4. 字符串（Strings）</h2>
+<p><code>string</code> 类型表示字符串，即一个字符序列。</p>
+<p>Lua 中的字符串是不可变的（immutable）。你不能修改一个已有字符串，但可以创建一个包含指定修改的新字符串。例如：</p>
+<pre><code>a = &quot;one string&quot;                      -- 已有字符串：one string
+b = string.gsub(a, &quot;one&quot;, &quot;another&quot;)  -- 包含指定修改的新字符串：another string
+</code></pre>
+<p>与其他 Lua 对象（如：表、函数等）一样，字符串的内存分配和释放工作，都 Lua 语言自动管理的。</p>
+<p>理论上，字符串的长度是不受限制的。实际使用中，可以少到零个字符、单个字符，也可以多到 100K 或 1M 的字符。借助长度运算符（length operator）<code>#</code>，可以得到一个字符串的长度：</p>
+<pre><code>a = &quot;hello&quot;
+print(#a)            --&gt; 5
+print(#&quot;good\0bye&quot;)  --&gt; 8
+</code></pre>
+<h3 id="%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F">字符串常量</h3>
+<p>字符串常量可以使用双引号 <code>&quot;</code> 或者单引号 <code>'</code>。例如：</p>
+<pre><code>&quot;a string&quot;    'another string'    &quot;I'm ok&quot;    'double quote (&quot;&quot;)'
+</code></pre>
+<p>Lua 字符串也可以包括 C 语言风格的转义字符：</p>
+<pre><code>\a  响铃字符
+\b  退格符
+\f  换页符
+\n  换行符
+\r  回车符
+\t  水平制表符
+\v  垂直制表符
+\\  反斜杠
+\&quot;  双引号
+\'  单引号
+</code></pre>
+<h3 id="%E9%95%BF%E5%AD%97%E7%AC%A6%E4%B8%B2">长字符串</h3>
+<p>对于长字符串，特别是跨行字符串，可以用双方括号来定义。（对于 Lua 中的长注释，也可以采用这种方式。）</p>
+<ol>
+<li>
+<p>简单的长字符串</p>
+<pre><code> page = [[                      -- 第一个字符如果是换行符，则会被忽略掉
+ &lt;html&gt;
+ &lt;head&gt;
+   &lt;title&gt;An HTML Page&lt;/title&gt;  -- 转义字符也不会被转义
+ &lt;/head&gt;
+ &lt;body&gt;
+   &lt;a href=&quot;http://www.lua.org&quot;&gt;Lua&lt;/a&gt;
+ &lt;/body&gt;
+ &lt;/html&gt;
+ ]]
+</code></pre>
+</li>
+<li>
+<p>如果长字符串中包含有 <code>]]</code> 字符，则在双方括号中添加（一个或多个）等号，以示区分</p>
+<pre><code> complex = [=[
+   This is a long string, followed with a long comment.
+   -- [[
+     This is a long comment.
+   ]]    -- 匹配 [[
+ ]=]    -- 匹配 [=[
+</code></pre>
+</li>
+</ol>
+<h3 id="%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2">自动类型强制转换</h3>
+<p>根据运算过程的需要，Lua 支持字符串和数字之间的自动转换。</p>
+<p>如果运算过程期望一个数字的地方，出现了一个字符串，Lua 会自动将字符串转换为数字，再进行运算。例如：</p>
+<pre><code>print(&quot;10&quot; + 1)    --&gt; 11
+print(&quot;-5.3e-10&quot; * &quot;2&quot;)    --&gt; -1.06e-9
+print(&quot;hello&quot; + 1)    --&gt; ERROR (attempt to perform arithmetic on a string value)
+</code></pre>
+<p>如果运算过程中期望一个字符串的地方，出现了一个数字，Lua 会自动将数字转换为字符串，再进行运算。例如：</p>
+<pre><code>print(10 .. 20)  --&gt; 1020
+</code></pre>
+<p><strong>注意</strong>: 实际编码中，不推荐依赖于这种自动转换机制，而是应该在需要作类型转换的地方明确进行转换。</p>
+<h4 id="%E6%98%8E%E7%A1%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">明确类型转换</h4>
+<ol>
+<li>
+<p>将字符串转换为数字（借助 <code>tonumber</code> 函数）</p>
+<pre><code> n = tonumber(&quot;10&quot;)
+ print(n, type(n))      --&gt; 10   number
+
+ n = tonumber(&quot;hello&quot;)
+ print(n, type(n))      --&gt; nil  nil
+</code></pre>
+</li>
+<li>
+<p>将数字转换为字符串</p>
+<ul>
+<li>
+<p>借助 <code>tostring</code> 函数</p>
+<p>print(tostring(10) == &quot;10&quot;)  --&gt; true</p>
+</li>
+<li>
+<p>连接数字和空字符串</p>
+<p>print(10 .. &quot;&quot; == &quot;10&quot;)  --&gt; true</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-%E8%A1%A8%EF%BC%88tables%EF%BC%89">5. 表（Tables）</h2>
+<p><code>table</code> 类型实现了关联数组（associative arrays）。关联数组是指这样一种数组，它不仅可以按数字来索引，还可以按字符串，或者其他任何非 <code>nil</code> 的值来索引。</p>
+<p>表是 Lua 中唯一的数据构造机制，它非常强大。借助于表，Lua 以一种简单、一致、高效的方式，实现了很多数据结构，包括数组（arrays）、集合（sets）、记录（records），以及包（packages）和对象（objects）。</p>
+<p>例如，在其他语言中，我们通常将 <code>io.read</code> 理解为：<code>io</code> 模块中的 <code>read</code> 函数。而在 Lua 中，从技术上来讲，这个表达式则意味着：以字符串 <code>read</code> 为键，去索引表 <code>io</code>。</p>
+<h3 id="%E5%88%9B%E5%BB%BA%E8%A1%A8">创建表</h3>
+<p>在 Lua 中，可以用构造表达式 {} 来创建一个表：</p>
+<pre><code>a = {}         -- 创建一个表，并用变量 a 来指向它
+a[&quot;x&quot;] = 10    -- 添加一个条目（键为字符串 &quot;x&quot;，值为数字 10）
+a[20] = &quot;wow&quot;  -- 添加一个条目（键为数字 20，值为字符串 &quot;wow&quot;）
+</code></pre>
+<p>与全局变量类似，一个表中：未初始化的字段，默认值为 nil；你也可以给一个字段赋值为 nil，以删除该字段。</p>
+<h3 id="%E8%AE%B0%E5%BD%95">记录</h3>
+<p>为了用表来表示记录，对于字符串类型的键，Lua 还提供了一个语法糖 <code>a.name</code> 用来表示 <code>a[&quot;name&quot;]</code>。</p>
+<pre><code>print(a.x == a[&quot;x&quot;])  --&gt; true   -- a.x 等价于 a[&quot;x&quot;]
+</code></pre>
+<p>在 Lua 中，表的“点记法”（<code>a.name</code>）与“字符串记法”（<code>a[&quot;name&quot;]</code>），在技术上是等价的。但在概念上，点记法更符合人们使用记录的习惯，一条记录的字段往往是固定的、预先定义好的；而字符串记法则隐含有动态特性，我们可以随时新增或删除表中的条目。</p>
+<h3 id="%E6%95%B0%E7%BB%84">数组</h3>
+<p>以整数为键来使用表，就可以实现数组或列表。与 C 语言不同，Lua 语言的惯例是：数组索引从 1 开始计。</p>
+<pre><code>a = {}
+a[1] = &quot;x&quot;  -- 数组索引从 1 开始计
+a[2] = &quot;y&quot;
+a[3] = &quot;z&quot;
+</code></pre>
+<p>数组（表）中可能会包含值为 nil 的元素，这些元素又叫做 <code>空洞</code>（holes）。如果一个列表没有空洞，我们称它为一个 <code>序列</code>。对于序列，Lua 提供了长度运算符 <code>#</code>，它返回数组中的最后一个索引，也就是序列的长度。例如：</p>
+<pre><code>-- 打印数组 a 中的所有元素
+for i = 1, #a do
+  print(a[i])
+end
+</code></pre>
+<h2 id="6-%E5%87%BD%E6%95%B0%EF%BC%88functions%EF%BC%89">6. 函数（Functions）</h2>
+<p>在 Lua 中，函数是第一等公民：函数可以被赋值给变量，可以作为参数传递给其他函数，也可以作为其他函数的返回值。同时，Lua 还提供函数式编程范式，支持基于词法作用域的闭包。</p>
+<p>Lua 既可以调用 Lua 实现的函数，也可以调用 C 实现的函数。</p>
+<h2 id="7-%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%BA%BF%E7%A8%8B%EF%BC%88userdata-and-threads%EF%BC%89">7. 用户数据与线程（Userdata and Threads）</h2>
+<p><code>userdata</code> 类型允许任意 C 数据被存储到 Lua 变量中。用户数据用于表示一个新类型，该类型由 C 程序或 C 库创建。</p>
+<p><code>thread</code> 类型与 Lua 中的协程（coroutines）有关。</p>
+<h2 id="%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%88exercises%EF%BC%89">练习题（Exercises）</h2>
+<h3 id="q1-%E8%A1%A8%E8%BE%BE%E5%BC%8F-typenil--nil-%E7%9A%84%E5%80%BC%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%88%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%80%9F%E5%8A%A9-lua-%E4%BB%A3%E7%A0%81%E6%9D%A5%E9%AA%8C%E8%AF%81%E4%BD%A0%E7%9A%84%E7%AD%94%E6%A1%88%EF%BC%89%EF%BC%9F%E4%BD%A0%E8%83%BD%E8%A7%A3%E9%87%8A%E4%BA%A7%E7%94%9F%E8%BF%99%E4%B8%AA%E7%BB%93%E6%9E%9C%E7%9A%84%E5%8E%9F%E5%9B%A0%E5%90%97%EF%BC%9F">Q1. 表达式 <code>type(nil) == nil</code> 的值是多少（你可以借助 Lua 代码来验证你的答案）？你能解释产生这个结果的原因吗？</h3>
+<p><code>type(nil) == nil</code> 的值为 <code>false</code>。</p>
+<p>因为 <code>type</code> 函数返回的是类型名称，所以 <code>type(nil)</code> 返回字符串 <code>&quot;nil&quot;</code>，而 <code>nil</code> 是 nil 类型的值，所以二者不相等。</p>
+<h3 id="q2-%E4%B8%8B%E5%88%97%E9%82%A3%E4%BA%9B%E6%98%AF%E5%90%88%E6%B3%95%E7%9A%84%E6%95%B0%E5%AD%97%EF%BC%9F%E5%AE%83%E4%BB%AC%E7%9A%84%E5%80%BC%E5%88%86%E5%88%AB%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F">Q2. 下列那些是合法的数字？它们的值分别是多少？</h3>
+<p>.0e12       -- 合法（值为 0）
+.e12        -- 不合法
+0.0e        -- 不合法
+0x12        -- 合法（18）
+0xABFG      -- 不合法
+0xA         -- 合法（10）
+FFFF        -- 不合法
+0xFFFFFFFF  -- 合法（值为 4294967295）
+0x          -- 不合法
+0x1P10      -- 合法（值为 1024）
+0.1e1       -- 合法（值为 1）
+0x0.1p1     -- 合法（值为 0.125）</p>
+<h3 id="q3-%E6%95%B0%E5%AD%97-127-%E7%AD%89%E4%BA%8E%E5%88%86%E6%95%B0-12710%EF%BC%8C%E5%85%B6%E4%B8%AD%E5%88%86%E6%AF%8D%E6%98%AF-10-%E7%9A%84%E5%B9%82%E3%80%82%E4%BD%A0%E8%83%BD%E6%8A%8A%E5%AE%83%E8%A1%A8%E8%BE%BE%E4%B8%BA%E4%BB%A5-2-%E7%9A%84%E5%B9%82%E4%B8%BA%E5%88%86%E6%AF%8D%E7%9A%84%E5%88%86%E6%95%B0%E5%90%97%EF%BC%9F%E5%86%8D%E8%AF%95%E8%AF%95-55-%E5%91%A2%EF%BC%9F">Q3. 数字 12.7 等于分数 127/10，其中分母是 10 的幂。你能把它表达为以 2 的幂为分母的分数吗？再试试 5.5 呢？</h3>
+<p>以 2 的幂为分母的分数，12.7 可以表达为 0x19.6666666666666p-1，5.5 可以表达为 11/2。</p>
+<h3 id="q4-%E5%A6%82%E4%BD%95%E5%B0%86%E4%B8%8B%E5%88%97-xml-%E7%89%87%E6%AE%B5%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B5%8C%E5%85%A5%E5%88%B0-lua-%E4%B8%AD%EF%BC%9F%EF%BC%88%E8%AF%B7%E8%87%B3%E5%B0%91%E7%BB%99%E5%87%BA%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E3%80%82%EF%BC%89">Q4. 如何将下列 XML 片段作为一个字符串嵌入到 Lua 中？（请至少给出两种方式。）</h3>
+<pre><code>&lt;![CDATA[
+  Hello world
+]]&gt;
+</code></pre>
+<p>第一种方式：</p>
+<pre><code>xml = '&lt;![CDATA[\n  Hello world\n]]&gt;'
+</code></pre>
+<p>第二种方式：</p>
+<pre><code>xml = [=[
+&lt;![CDATA[
+  Hello world
+]]&gt;
+]=]
+</code></pre>
+<h3 id="q5-%E5%81%87%E8%AE%BE%E4%BD%A0%E9%9C%80%E8%A6%81%E5%B0%86%E4%B8%80%E4%B8%AA%E5%8C%85%E5%90%AB%E4%BB%BB%E6%84%8F%E5%AD%97%E8%8A%82%E7%9A%84%E5%BA%8F%E5%88%97%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%BA-lua-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%EF%BC%8C%E4%BD%A0%E8%AF%A5%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%90%8C%E6%97%B6%E8%AF%B7%E8%80%83%E8%99%91%E5%8F%AF%E8%AF%BB%E6%80%A7%E3%80%81%E6%AF%8F%E8%A1%8C%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6%E5%92%8C%E6%80%A7%E8%83%BD%E3%80%82">Q5. 假设你需要将一个包含任意字节的序列格式化为 Lua 字符串常量，你该如何实现？实现的同时请考虑可读性、每行最大长度和性能。</h3>
+<p>暂略</p>
+<h3 id="q6-%E5%81%87%E8%AE%BE%E6%9C%89%E4%B8%8B%E5%88%97%E4%BB%A3%E7%A0%81%EF%BC%9A">Q6. 假设有下列代码：</h3>
+<pre><code>a = {};  a.a = a
+</code></pre>
+<ol>
+<li>
+<p>请问 <code>a.a.a.a</code> 的值是多少？其中的任何一个 <code>a</code> 跟其他的 <code>a</code> 之间分别有什么不同？</p>
+<p><code>a.a.a.a</code> 的值等于 <code>a.a.a</code> 的值等于 <code>a.a</code> 的值等于 <code>a</code> 的值，因为它们都指向同一个表。</p>
+</li>
+<li>
+<p>在上述代码的基础上，加上下面这行代码：<code>a.a.a.a = 3</code>，现在 <code>a.a.a.a</code> 的值又是多少？</p>
+<p>表达式 <code>a.a.a.a</code> 会报错，因为 <code>a.a.a.a = 3</code> 会使得 <code>a.a</code> 的值变成 <code>3</code>，所以 <code>a.a.a.a</code> 等效于 <code>3.a.a</code>，它不是合法的 Lua 表达式，因此会导致报错。</p>
+</li>
+</ol>
+
+    </body>
+    </html>
